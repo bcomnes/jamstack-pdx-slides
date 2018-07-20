@@ -4,21 +4,309 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
-  <title>Big</title>
+  <title>Bret's JAMStack Meetup slides</title>
   <link rel="stylesheet" href="/bundle.css">
   <script src="/bundle.js"></script>
+  <style>
+    .new-shiny { background: #aaaaaa; }
+    .light-text { color: #fff; }
+  </style>
 </head>
 
 <body class='light'>
-  <div>use &harr; to navigate</div>
+  <div>
+    use &harr; to navigate
+    <notes>foo bar</notes>
+  </div>
   <div>
     <div>Bret Comnes</div>
     <div>🌐<a href="https://bret.io">bret.io</a></div>
     <div>🐦<a href="https://twitter.com/uhhyeahbret">@uhhyeahbret</a></div>
     <div>🐈<a href="https://github.com/bcomnes">github.com/bcomnes</a></div>
   </div>
+  <div>I work at Netlify</div>
+  <div data-background-image="static/netlify.png"></div>
+  <div data-background-image="static/app.png"></div>
+  <div></div>
+  <div><p>✍️</p>Site specific generators & building your own tools</div>
+  <div><p>📜</p> <p>A little history</p></div>
+  <div>Website development has changed a lot over the last few years</div>
+  <div>Static sites were the norm at one point</div>
+  <div><pre><code>generic.edu/~you</code></pre></div>
+  <div>Apache and PHP shared hosting came sometime later</div>
+  <div data-background-image="static/apache.png"></div>
+  <div>Dynamic server rendered sites hosted in multi-tenant web servers</div>
+  <div>
+    <p><img src="static/wordpress.png"/><p>
+    <p>Wordpress ate the world<p>
   </div>
-  <div data-background-image="img/hypermodules.png"></div>
+  <div><p>💪</p>Dynamic languages started flexing</div>
+  <div>Python Django, Ruby on Rails Etc</div>
+  <div>Lots of PHP jokes were made</div>
+  <div>At some point this thing was launched</div>
+  <div data-background-image="static/iphone.jpg"></div>
+  <div>Webapps actually became a thing...</div>
+  <div>But they didn't work out...</div>
+  <div data-background-image="static/updates.jpg"></div>
+  <div>And native apps became a concept</div>
+  <div>At some point Github launches</div>
+  <div data-background-image="static/old-github.png"></div>
+  <div>And starts offering free static hosting for developers</div>
+  <div>It includes built in support for Jekyll</div>
+  <div data-background-image="static/jekyll.png"></div>
+  <div>A minor SSG renaissance commenced</div>
+  <div data-background-image="static/static-sites.png"></div>
+  <div>Many (more technical) folks jumped ship from shared hosting to static site hosts...</div>
+  <div>...taking advantage of cheap (and free) static hosting...</div>
+  <div>...and escaping armature dba hell.</div>
+  <div data-background-image="static/react.png"></div>
+  <div>React and many other reactive SPA frameworks launched</div>
+  <div>Advanced GUI architecture via App Component models...</div>
+  <div>...backed by the worlds most active Module ecosystem</div>
+  <div>SSR and static SSR pushed the boundaries of webapps closer to native app capabilities</div>
+  <div>Highly capable webapps backed by static assets served from CDNs and APIs...</div>
+  <div>...and lots and lots of frameworks and tools</div>
+  <div>⏭</div>
+  <div>My story</div>
+  <div>Initial dive into webdev via static sites + git</div>
+  <div>Big fan of Jekyll + gh-pages</div>
+  <div>A slow progression from octopress to jekyll</div>
+  <div>As I picked up more Node.js and JS dev xp...</div>
+  <div>I started seeing the walls and fences of the framework I had built my sites with...</div>
+  <div>...and felt constrained withing the design of Jekyll...</div>
+  <div>...now that I had access to a much wider universe through JS and Node.js</div>
+  <div>
+    <pre>
+      <code class="javascript">
+net.createServer((socket) => {
+  socket.end('whatever you want!')
+})
+      </code>
+    </pre>
+        <pre>
+      <code class="javascript">
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' })
+  res.end('whatever you want!')
+})
+      </code>
+    </pre>
+        <pre>
+      <code class="javascript">
+fs.writeFileSync('some/build/dir/foo.html', 'whatever you want!', 'utf8')
+      </code>
+    </pre>
+  </div>
+  <div>Netlify launches with a serene combination of Travis.CI and gh-pages like features...</div>
+  <div>...finally a git centric static site work flow was possible with ANY tool</div>
+  <div>This is fantastic news for every generalized SSG out there...</div>
+  <div>But its also good for every kind of tool out there.</div>
+  <div>What does infinite, free, static hosting look like?</div>
+  <div>What does it enable?</div>
+  <div>Site specific generators</div>
+  <div>Augmented and bespoke tooling and dashboards</div>
+  <div>Low cost experiments and technological evolution</div>
+  <div></div>
+  <div>Site specific generators</div>
+  <div><p>📝</p><a href="https://github.com/hypermodules/sitedown">Sitedown</a></div>
+  <div>
+    <pre>
+      <code class="console">
+$ sitedown --help
+Usage: sitedown [source] [options]
+
+    Example: sitedown source/ -b build/ -l layout.html
+
+    source                path to source directory (default: current working directory)
+    --build, -b           path to build directory (default: "build")
+    --pretty              use directory indexes for pretty URLs (default: true)
+    --layout, -l          path to layout file
+    --el, -e              css selector for target element (default: ".markdown-body")
+    --github-headings, -g add anchors to headings just like GitHub (default: false)
+    --silent, -s          make less noise during build
+    --watch, -w           watch a directory or file (experimental)
+    --version, -v         show version information
+    --help, -h            show help
+      </code>
+    </pre>
+  </div>
+</body>
+  <div>
+    <pre>
+      <code class="console">
+$ sitedown src -b dist -l src/layout.html
+
+
+- .gitignore
+- .travis.yml                 - index.html
+- bin.js                      + changelog/
+- CHANGELOG.md                  - index.html
+- CONTRIBUTING.md             + contributing/
+- index.js                      - index.html
+- LICENSE.md        ----->    + license/
+- package.json                  - index.html
+- README.md                   + test/
++ test/                         + markdown/
+  - index.js                      - index.html
+  + markdown/
+    - README.md
+      </code>
+    </pre>
+  </div>
+  <div></div>
+  <div>Orthogonal tooling</div>
+  <div>
+    <p>Trend 1: SSG's started bundling in non html-processing tools</p>
+    <ul>
+      <li>CSS Pre-processors</li>
+      <li>JS bundlers</li>
+      <li>Linters</li>
+      <li>...etc</li>
+    </ul>
+  </div>
+  <div>
+    <p>Trend 2: Toolchain wrappers</p>
+    <ul>
+      <li>Grunt</li>
+      <li>Gulp</li>
+      <li>Broccoli</li>
+      <li>...etc</li>
+      <li>Webpack (to some degree)</li>
+    </ul>
+  </div>
+  <div>
+    <p>Issues I had with these trends</p>
+    <ul>
+      <li>Lots of hidden, hard to uncover assumptions</li>
+      <li>Weird, had to debug bugs</li>
+      <li>Challenging to make upstream contributions</li>
+      <li>Over-orchestration.  Tying thing together that don't need to be.</li>
+      <li>Deprot</li>
+      <li>Moving targets</li>
+      <li>...etc</li>
+    </ul>
+  </div>
+  <div>
+    What can one do?
+  </div>
+  <div>
+    The right tool for the right job!
+  </div>
+  <div data-background-image="static/multi-build.png"></div>
+  <div data-background-image="static/npm-build.png"></div>
+  <div><a href="https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">
+    How to Use npm as a Build Tool
+  </a></div>
+  <div>
+    <pre><code class="json">
+{
+  "devDependencies": {
+    "postcss-cli": "^6.0.0"
+  },
+  "scripts": {
+    "css": "postcss src/index.css -o site/bundle.css"
+  }
+}
+    </code></pre>
+  </div>
+  <div>demo: <a href="https://github.com/mysticatea/npm-run-alls">
+    <pre>npm-run-all</pre>
+  </a></div>
+  <div>
+    <pre><code class="console">
+$ run-s # run series
+$ run-p # run parallel
+    </code></pre>
+  </div>
+  <div>
+    <pre><code class="json">
+{
+  "scripts": {
+    "a": "run-s a:*",
+    "a:1": "echo a:1",
+    "a:2": "echo a:2",
+    "a:3": "echo a:3",
+    "b": "run-p b:*",
+    "b:1": "echo a:1",
+    "b:2": "echo a:2",
+    "b:3": "echo a:3"
+  }
+}
+    </code></pre>
+    <pre><code class="console">
+$ npm run a # prints a:1 a:2 a:3
+    </code></pre>
+  </div>
+  <div>
+    <pre><code class="json">
+{
+  "scripts": {
+    "build": "npm run clean && run-p build:*",
+    "build:css": "postcss src/index.css -o site/bundle.css",
+    "build:js": "browserify src/index.js --debug | exorcist site/bundle.js.map > site/bundle.js",
+    "build:static": "cpx 'src/{index.html,static/**}' site",
+    "clean": "rimraf site && mkdirp site",
+    "start": "npm run watch",
+    "test": "run-s test:* build",
+    "test:deps": "dependency-check ./package.json --entry src/index.js",
+    "test:lint": "standard | snazzy",
+    "test:tape": "tape src/test.js | tap-format-spec",
+    "watch": "npm run clean && run-p watch:*",
+    "watch:css": "run-s 'build:css -- --watch'",
+    "watch:js": "budo src/index.js:bundle.js --dir site --live --open",
+    "watch:static": "npm run build:static -- --watch"
+  }
+}
+    </code></pre>
+  </div>
+  <div>Mad science!</div>
+  <div>BONUS: Auto-updates for my sites!</div>
+  <div data-background-image="static/gk.png"></div>
+  <div data-background-image="static/self-healing.png"></div>
+  <div></div>
+  <div>Tool specific sites</div>
+  <div>Github freed open source git repos</div>
+  <div>Hosted git repos became a ubiquitous tool you can use in creative ways</div>
+  <div>Netlify is freeing git backed static sites</div>
+  <div>Statically built apps and information can become a ubiquitous part of your work flow and projects</div>
+  <div>
+    Set up auxiliary websites that supplement your work-flow with static analysis and information
+  </div>
+  <div>
+    Demo: <a href="https://github.com/sverweij/dependency-cruiser">sverweij/dependency-cruiser</a>
+    <ul>
+      <li><a href="https://generate-feed.netlify.com">demo site</a></li>
+      <li><a href="https://app.netlify.com/sites/generate-feed/deploys">demo deploys</a></li>
+    </ul>
+  </div>
+  <div>
+    Demo: <a href="https://storybook.js.org">storybook</a>
+    <ul>
+      <li><a href="https://storybook.netlify.com">demo site</a></li>
+      <li><a href="https://app.netlify.com/sites/storybook/deploys">demo deploys</a></li>
+    </ul>
+  </div>
+  <div>
+    Demo: <a href="https://www.npmjs.com/package/webpack-bundle-analyzer">bundle profiling</a>
+    <ul>
+      <li><a href="https://app-profile.netlify.com">demo site</a></li>
+      <li><a href="https://5b34e5db792f893e7db26259--app-profile.netlify.com">demo deploy 1</a></li>
+      <li><a href="https://5b2921923672df2839bb0f65--app-profile.netlify.com">demo deploy 2</a></li>
+      <li><a href="https://5b1d759ddd6a546d1fbc21ed--app-profile.netlify.com">demo deploy 3</a></li>
+      <li><a href="https://5b19bbc311b73b78018625df--app-profile.netlify.com">demo deploy 4</a></li>
+    </ul>
+  </div>
+  <div></div>
+  <div>Build your own tools! (or at least give it a try)</div>
+  <div>Static SSR is still difficult to do in a general way</div>
+  <div>Publish your experiments!</div>
+  <div data-background-image="static/thats-all.jpg"></div>
+  <div>
+    <div>Bret Comnes</div>
+    <div>🌐<a href="https://bret.io">bret.io</a></div>
+    <div>🐦<a href="https://twitter.com/uhhyeahbret">@uhhyeahbret</a></div>
+    <div>🐈<a href="https://github.com/bcomnes">github.com/bcomnes</a></div>
+  </div>
 </body>
 
 </html>
