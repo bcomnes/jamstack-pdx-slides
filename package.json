@@ -1,10 +1,10 @@
 {
-  "name": "big-presentation-boilerplate",
-  "description": "big-presentation-boilerplate",
+  "name": "jamstack-pdx-slides",
+  "description": "jamstack-pdx-slides",
   "version": "1.0.0",
   "author": "Bret Comnes",
   "bugs": {
-    "url": "https://github.com/bcomnes/big-presentation-boilerplate/issues"
+    "url": "https://github.com/bcomnes/jamstack-pdx-slides/issues"
   },
   "dependencies": {
     "big-presentation": "^3.4.0",
@@ -31,7 +31,7 @@
     "standard": "^11.0.0",
     "tape": "^4.6.2"
   },
-  "homepage": "https://github.com/bcomnes/big-presentation-boilerplate#readme",
+  "homepage": "https://github.com/bcomnes/jamstack-pdx-slides#readme",
   "keywords": [
     "big",
     "boilerplate",
@@ -41,7 +41,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcomnes/big-presentation-boilerplate.git"
+    "url": "git+https://github.com/bcomnes/jamstack-pdx-slides.git"
   },
   "scripts": {
     "build": "npm run clean && run-p build:*",

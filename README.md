@@ -1,4 +1,4 @@
-# big-presentation-boilerplate
+#  my jamstack pdx meeting 1 slides
 
 My presentation setup, ready to fork
 
